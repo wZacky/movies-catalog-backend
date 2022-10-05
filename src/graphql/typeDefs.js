@@ -33,4 +33,17 @@ export const typeDefs = `
       password: String!
     ): User
   }
+
+  type Mutation {
+    updateLikes(
+      movieId: String!
+      likes: Int!
+    ): Int
+  }
+
+  type Mutation {
+    deleteMovie(
+      movieId: String!
+    ): ID
+  }
 `
