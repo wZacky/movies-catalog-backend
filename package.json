@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@graphql-yoga/node": "^2.13.13",
+    "dotenv": "^16.0.3",
     "mongoose": "^6.6.4"
   }
 }
