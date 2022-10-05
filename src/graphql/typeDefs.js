@@ -1,6 +1,7 @@
 export const typeDefs = `
   type Query {
     greeting: String
+    login(email: String!, password: String!): String
   }
 
   type Movie {
