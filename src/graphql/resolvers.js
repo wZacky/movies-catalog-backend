@@ -14,7 +14,8 @@ export const resolvers = {
       return userId._id;
     },
     userCatalog: async (_, {userId}) => {
-      const user = await User.findOne({id: userId}).populate('catalog');
+      const user = await User.findById(userId).populate('catalog');
+      console.log(userId);
 
       console.log(user.catalog);
       return user.catalog;
