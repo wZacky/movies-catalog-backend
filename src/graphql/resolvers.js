@@ -23,7 +23,7 @@ export const resolvers = {
       const users = await User.find();
 
       console.log('AQUI');
-      console.log(users);
+      // console.log(users);
 
       const movies = []
 
@@ -40,6 +40,8 @@ export const resolvers = {
           uniqueMovies.push(movie)
         }
       })
+
+      // console.log(uniqueMovies);
       return uniqueMovies;
     }
   },

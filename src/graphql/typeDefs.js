@@ -7,6 +7,7 @@ export const typeDefs = `
   }
 
   type Movie {
+    id: ID!
     title: String!
     image: String!
     description: String!
