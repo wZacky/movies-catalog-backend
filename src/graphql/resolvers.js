@@ -11,8 +11,36 @@ export const resolvers = {
         return 'ID-E01'
       }
 
-      // console.log(userId);
       return userId._id;
+    },
+    userCatalog: async (_, {userId}) => {
+      const user = await User.findOne({id: userId}).populate('catalog');
+
+      console.log(user.catalog);
+      return user.catalog;
+    },
+    generalCatalog: async (_, args) => {
+      const users = await User.find();
+
+      console.log('AQUI');
+      console.log(users);
+
+      const movies = []
+
+      for (let i = 0; i < users.length; i++) {
+        const newUser = await users[i].populate('catalog');
+        newUser.catalog.map(movie => movies.push(movie))
+      }
+
+      const uniqueMovies = [];
+      movies.forEach((movie) => {
+        let result = uniqueMovies.findIndex(item => item.title === movie.title);
+
+        if (result === -1) {
+          uniqueMovies.push(movie)
+        }
+      })
+      return uniqueMovies;
     }
   },
   Mutation: {
@@ -29,7 +57,6 @@ export const resolvers = {
 
       // updated User:
       await User.findByIdAndUpdate(args.registeredBy, {catalog: catalog}, {new: true});
-      //console.log(updatedUser);
 
       return movie;
     },

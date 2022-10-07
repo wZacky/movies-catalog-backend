@@ -2,6 +2,8 @@ export const typeDefs = `
   type Query {
     greeting: String
     login(email: String!, password: String!): String
+    userCatalog(userId: ID!): [Movie]
+    generalCatalog: [Movie]
   }
 
   type Movie {
